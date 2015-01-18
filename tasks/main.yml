@@ -1,0 +1,24 @@
+---
+- name: download HBase
+  command: bash -c "cd /root && wget http://apache-mirror.rbc.ru/pub/apache/hbase/hbase-0.98.7/hbase-0.98.7-hadoop2-bin.tar.gz" creates=/root/hbase-0.98.7-hadoop2-bin.tar.gz
+
+- name: unpack HBase
+  command: bash -c "cd /opt && tar xzf /root/hbase-0.98.7-hadoop2-bin.tar.gz" creates=/opt/hbase-0.98.7-hadoop2
+
+- name: create /opt/hbase
+  file: state=link src=/opt/hbase-0.98.7-hadoop2 dest=/opt/hbase
+
+- name: make /var/hbase
+  file: path=/var/hbase state=directory owner=hadoop group=hadoop mode=0700
+
+- name: make /opt/hbase/conf
+  file: path=/opt/hbase/conf state=directory owner=root group=root mode=0755
+
+- name: put /opt/hbase/conf/hbase-site.xml
+  template: src=hbase/hbase-site.xml dest=/opt/hbase/conf/hbase-site.xml owner=root group=root mode=0644
+
+- name: put /opt/hbase/conf/hbase-env.sh
+  template: src=hbase/hbase-env.sh dest=/opt/hbase/conf/hbase-env.sh owner=root group=root mode=0644
+
+#- name: create /opt/hbase/conf/hdfs-site.xml
+#  file: state=link src=/opt/hadoop/conf/hdfs-site.xml dest=/opt/hbase/conf/hdfs-site.xml
