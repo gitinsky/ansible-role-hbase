@@ -1,0 +1,3 @@
+---
+hbase_version: 0.98.9
+hbase_standalone: no

@@ -1,12 +1,15 @@
 ---
 - name: download HBase
-  command: bash -c "cd /root && wget http://apache-mirror.rbc.ru/pub/apache/hbase/hbase-0.98.9/hbase-0.98.9-hadoop2-bin.tar.gz" creates=/root/hbase-0.98.9-hadoop2-bin.tar.gz
+  command: bash -c "cd /root && wget http://apache-mirror.rbc.ru/pub/apache/hbase/hbase-{{ hbase_version }}/hbase-{{ hbase_version }}-hadoop2-bin.tar.gz" creates=/root/hbase-{{ hbase_version }}-hadoop2-bin.tar.gz
 
 - name: unpack HBase
-  command: bash -c "cd /opt && tar xzf /root/hbase-0.98.9-hadoop2-bin.tar.gz" creates=/opt/hbase-0.98.9-hadoop2
+  command: bash -c "cd /opt && tar xzf /root/hbase-{{ hbase_version }}-hadoop2-bin.tar.gz" creates=/opt/hbase-{{ hbase_version }}-hadoop2
 
 - name: create /opt/hbase
-  file: state=link src=/opt/hbase-0.98.9-hadoop2 dest=/opt/hbase
+  file: state=link src=/opt/hbase-{{ hbase_version }}-hadoop2 dest=/opt/hbase
+
+- name: add Hadoop user
+  user: name=hadoop shell=/usr/sbin/nologin state=present
 
 - name: make /var/hbase
   file: path=/var/hbase state=directory owner=hadoop group=hadoop mode=0700
@@ -16,9 +19,17 @@
 
 - name: put /opt/hbase/conf/hbase-site.xml
   template: src=hbase/hbase-site.xml dest=/opt/hbase/conf/hbase-site.xml owner=root group=root mode=0644
+  when: not hbase_standalone
 
 - name: put /opt/hbase/conf/hbase-env.sh
   template: src=hbase/hbase-env.sh dest=/opt/hbase/conf/hbase-env.sh owner=root group=root mode=0644
 
 #- name: create /opt/hbase/conf/hdfs-site.xml
 #  file: state=link src=/opt/hadoop/conf/hdfs-site.xml dest=/opt/hbase/conf/hdfs-site.xml
+
+- name: dirty start for a standalone gbase
+  shell: /opt/hbase/bin/start-hbase.sh
+  when: hbase_standalone
+  register: hbase_start
+  failed_when: "'master running as process' not in hbase_start.stdout and 'starting master' not in hbase_start.stdout"
+  changed_when: "'starting master' in hbase_start.stdout"
