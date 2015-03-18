@@ -1,12 +1,12 @@
 ---
 - name: download HBase
-  command: bash -c "cd /root && wget http://apache-mirror.rbc.ru/pub/apache/hbase/hbase-{{ hbase_version }}/hbase-{{ hbase_version }}-hadoop2-bin.tar.gz" creates=/root/hbase-{{ hbase_version }}-hadoop2-bin.tar.gz
+  command: bash -c "cd /root && wget http://apache-mirror.rbc.ru/pub/apache/hbase/hbase-{{ hbase_version }}/hbase-{{ hbase_version }}{{ hadoop_suffix }}-bin.tar.gz" creates=/root/hbase-{{ hbase_version }}{{ hadoop_suffix }}-bin.tar.gz
 
 - name: unpack HBase
-  command: bash -c "cd /opt && tar xzf /root/hbase-{{ hbase_version }}-hadoop2-bin.tar.gz" creates=/opt/hbase-{{ hbase_version }}-hadoop2
+  command: bash -c "cd /opt && tar xzf /root/hbase-{{ hbase_version }}{{ hadoop_suffix }}-bin.tar.gz" creates=/opt/hbase-{{ hbase_version }}{{ hadoop_suffix }}
 
 - name: create /opt/hbase
-  file: state=link src=/opt/hbase-{{ hbase_version }}-hadoop2 dest=/opt/hbase
+  file: state=link src=/opt/hbase-{{ hbase_version }}{{ hadoop_suffix }} dest=/opt/hbase
 
 - name: add Hadoop user
   user: name=hadoop shell=/usr/sbin/nologin state=present
