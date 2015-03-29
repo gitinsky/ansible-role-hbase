@@ -24,8 +24,11 @@
 - name: put /opt/hbase/conf/hbase-env.sh
   template: src=hbase/hbase-env.sh dest=/opt/hbase/conf/hbase-env.sh owner=root group=root mode=0644
 
-#- name: create /opt/hbase/conf/hdfs-site.xml
-#  file: state=link src=/opt/hadoop/conf/hdfs-site.xml dest=/opt/hbase/conf/hdfs-site.xml
+- name: create /opt/hbase/conf/hdfs-site.xml
+  file: state=link src=/opt/hadoop/conf/hdfs-site.xml dest=/opt/hbase/conf/hdfs-site.xml
+
+- name: create /opt/hbase/conf/core-site.xml
+  file: state=link src=/opt/hadoop/conf/core-site.xml dest=/opt/hbase/conf/core-site.xml
 
 - name: dirty start for a standalone hbase
   shell: /opt/hbase/bin/start-hbase.sh
