@@ -24,7 +24,7 @@
 <configuration>
 <property>
         <name>hbase.rootdir</name>
-        <value>hdfs://{{ hbase_rootdir }}:8020/hbase</value>
+        <value>hdfs://{{ hdfs_nameservice_id }}/hbase</value>
 </property>
 <property>
         <name>hbase.cluster.distributed</name>
@@ -82,27 +82,9 @@
        <value>0.25</value>
 </property>
 
-<!--
-         local client reads to a Datanodes files directly
--->
-<property>
-       <!-- @see https://issues.apache.org/jira/browse/HDFS-2246 -->
-       <name>dfs.client.read.shortcircuit</name>
-       <value>true</value>
-</property>
-<property>
-    <name>dfs.domain.socket.path</name>
-    <value>/var/hadoop/dn_socket</value>
-</property>
 <property>
     <!-- @see https://issues.apache.org/jira/browse/HBASE-5074 -->
     <name>hbase.regionserver.checksum.verify</name>
-    <value>true</value>
-</property>
-
-<!-- Enable durable sync -->
-<property>
-    <name>dfs.support.append</name>
     <value>true</value>
 </property>
 
