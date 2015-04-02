@@ -26,9 +26,11 @@
 
 - name: create /opt/hbase/conf/hdfs-site.xml
   file: state=link src=/opt/hadoop/conf/hdfs-site.xml dest=/opt/hbase/conf/hdfs-site.xml
+  when: not hbase_standalone
 
 - name: create /opt/hbase/conf/core-site.xml
   file: state=link src=/opt/hadoop/conf/core-site.xml dest=/opt/hbase/conf/core-site.xml
+  when: not hbase_standalone
 
 - name: dirty start for a standalone hbase
   shell: /opt/hbase/bin/start-hbase.sh
