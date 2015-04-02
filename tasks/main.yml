@@ -32,9 +32,20 @@
   file: state=link src=/opt/hadoop/conf/core-site.xml dest=/opt/hbase/conf/core-site.xml
   when: not hbase_standalone
 
-- name: dirty start for a standalone hbase
-  shell: /opt/hbase/bin/start-hbase.sh
+# - name: dirty start for a standalone hbase
+#   shell: /opt/hbase/bin/start-hbase.sh
+#   when: hbase_standalone
+#   register: hbase_start
+#   failed_when: "'master running as process' not in hbase_start.stdout and 'starting master' not in hbase_start.stdout"
+#   changed_when: "'starting master' in hbase_start.stdout"
+
+- name: put hbase-master eye config file
+  template: src=hbase/hbase-standalone.rb dest=/etc/eye/hbase-standalone.rb owner=root group=root mode=0644
   when: hbase_standalone
-  register: hbase_start
-  failed_when: "'master running as process' not in hbase_start.stdout and 'starting master' not in hbase_start.stdout"
-  changed_when: "'starting master' in hbase_start.stdout"
+  tags: eye
+  
+- name: load config in eye
+  command: bash -c "source /usr/local/rvm/scripts/rvm && eye l /etc/eye/apps.eye"
+  sudo: yes
+  when: hbase_standalone
+  tags: eye
