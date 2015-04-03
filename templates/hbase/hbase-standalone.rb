@@ -11,8 +11,8 @@ Eye.application 'hbase-standalone' do
     stop_command '/opt/hbase/bin/stop-hbase.sh'
 
     daemonize true
-    start_timeout 10.seconds
-    stop_timeout 5.seconds
+    start_timeout 20.seconds
+    stop_timeout 120.seconds
 
   end
 

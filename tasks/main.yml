@@ -43,7 +43,7 @@
   template: src=hbase/hbase-standalone.rb dest=/etc/eye/hbase-standalone.rb owner=root group=root mode=0644
   when: hbase_standalone
   tags: eye
-  
+
 - name: load config in eye
   command: bash -c "source /usr/local/rvm/scripts/rvm && eye l /etc/eye/apps.eye"
   sudo: yes
