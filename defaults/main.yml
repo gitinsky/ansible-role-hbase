@@ -1,4 +1,4 @@
 ---
-hbase_version: 0.98.11
+hbase_version: 0.98.12.1
 hadoop_suffix: -hadoop2
 hbase_standalone: no
