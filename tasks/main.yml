@@ -49,3 +49,22 @@
   sudo: yes
   when: hbase_standalone
   tags: eye
+
+- name: increase limits
+  template: dest=/etc/security/limits.d/90-hbase.conf src=security/limits.d/90-hbase.conf
+  register: ulimit_conf
+  tags: ulimit
+
+- name: update ulimit
+  lineinfile:
+      dest: /etc/pam.d/common-session
+      regexp: '^\s{0,}session\s{1,}required\s{1,}pam_limits.so'
+      line: 'session required  pam_limits.so'
+  tags: ulimit
+      
+  
+# - name: update ulimit
+#   shell: ulimit -n 65536
+#   # sudo_user: hadoop
+#   # when: ulimit_conf.changed
+#   tags: ulimit
