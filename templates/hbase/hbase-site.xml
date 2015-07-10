@@ -32,7 +32,7 @@
 </property>
 <property>
         <name>hbase.tmp.dir</name>
-        <value>/var/hbase</value>
+        <value>{{ hbase_var_prefix }}</value>
 </property>
 <property>
         <name>hbase.zookeeper.quorum</name>
@@ -106,6 +106,41 @@
 <property>
     <name>hbase.hstore.compaction.max.size</name>
     <value>524288000</value>
+</property>
+
+<property>
+    <name>hbase.master.info.port</name>
+    <value>{{ hbase_master_info_port }}</value>
+</property>
+
+<property>
+    <name>hbase.regionserver.port</name>
+    <value>{{ hbase_regionserver_port }}</value>
+</property>
+
+<property>
+    <name>hbase.master.port</name>
+    <value>{{ hbase_master_port }}</value>
+</property>
+
+<property>
+    <name>hbase.zookeeper.leaderport</name>
+    <value>{{ zookeeper_leaderport }}</value>
+</property>
+
+<property>
+    <name>hbase.zookeeper.peerport</name>
+    <value>{{ zookeeper_peerport }}</value>
+</property>
+
+<property>
+    <name>hbase.zookeeper.property.clientPort</name>
+    <value>{{ zookeeper_client_port }}</value>
+</property>
+
+<property>
+    <name>hbase.regionserver.info.port</name>
+    <value>{{ hbase_regionserver_info_port }}</value>
 </property>
 
 </configuration>
