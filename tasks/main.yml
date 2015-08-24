@@ -19,6 +19,7 @@
 
 - name: put {{ hbase_distr_prefix }}/conf/hbase-site.xml
   template: src=hbase/hbase-site.xml dest={{ hbase_distr_prefix }}/conf/hbase-site.xml owner=root group=root mode=0644
+  register: hbase_site_xml
   when: not hbase_standalone
 
 - name: put {{ hbase_distr_prefix }}/conf/hbase-env.sh

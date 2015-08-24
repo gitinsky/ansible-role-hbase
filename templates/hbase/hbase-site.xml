@@ -143,4 +143,11 @@
     <value>{{ hbase_regionserver_info_port }}</value>
 </property>
 
+{% if hbase_regionserver_thrift_framed is defined and hbase_regionserver_thrift_framed %}
+<property>
+     <name>hbase.regionserver.thrift.framed</name>
+     <value>true</value>
+ </property>
+{% endif %}
+
 </configuration>
