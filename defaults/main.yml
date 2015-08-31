@@ -4,3 +4,10 @@ hadoop_suffix: -hadoop2
 hbase_standalone: no
 hbase_distr_prefix: /opt/hbase
 hbase_var_prefix: /var/hbase
+hbase_master_port: 60000
+hbase_master_info_port: 60010
+hbase_regionserver_port: 60020
+hbase_regionserver_info_port: 60030
+zookeeper_leaderport: 3888
+zookeeper_peerport: 2888
+zookeeper_client_port: 2181
