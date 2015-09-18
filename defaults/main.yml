@@ -1,5 +1,5 @@
 ---
-hbase_version: 0.98.12.1
+hbase_version: 0.98.14
 hadoop_suffix: -hadoop2
 hbase_standalone: no
 hbase_distr_prefix: /opt/hbase
