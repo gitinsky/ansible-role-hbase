@@ -150,4 +150,14 @@
  </property>
 {% endif %}
 
+<property>
+     <name>hbase.regionserver.thrift.port</name>
+     <value>{{ hbase_thrift_port }}</value>
+</property>
+
+<property>
+     <name>hbase.thrift.info.port</name>
+     <value>{{ hbase_thrift_info_port }}</value>
+</property>
+
 </configuration>
