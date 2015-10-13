@@ -18,12 +18,12 @@
   file: path={{ hbase_distr_prefix }}/conf state=directory owner=root group=root mode=0755
 
 - name: put {{ hbase_distr_prefix }}/conf/hbase-site.xml
-  template: src=hbase/hbase-site.xml dest={{ hbase_distr_prefix }}/conf/hbase-site.xml owner=root group=root mode=0644
+  template: src=hbase/hbase-site.xml dest={{ hbase_distr_prefix }}/conf/hbase-site.xml owner=root group=root mode=0644 backup=yes
   register: hbase_site_xml
   when: not hbase_standalone
 
 - name: put {{ hbase_distr_prefix }}/conf/hbase-env.sh
-  template: src=hbase/hbase-env.sh dest={{ hbase_distr_prefix }}/conf/hbase-env.sh owner=root group=root mode=0644
+  template: src=hbase/hbase-env.sh dest={{ hbase_distr_prefix }}/conf/hbase-env.sh owner=root group=root mode=0644 backup=yes
 
 - name: create {{ hbase_distr_prefix }}/conf/hdfs-site.xml
   file: state=link src={{ hadoop_distr_prefix }}/conf/hdfs-site.xml dest={{ hbase_distr_prefix }}/conf/hdfs-site.xml
@@ -41,7 +41,7 @@
 #   changed_when: "'starting master' in hbase_start.stdout"
 
 - name: put hbase-master eye config file
-  template: src=hbase/hbase-standalone.rb dest=/etc/eye/hbase-standalone.rb owner=root group=root mode=0644
+  template: src=hbase/hbase-standalone.rb dest=/etc/eye/hbase-standalone.rb owner=root group=root mode=0644 backup=yes
   when: hbase_standalone
   tags: eye
 
@@ -52,7 +52,7 @@
   tags: eye
 
 - name: increase limits
-  template: dest=/etc/security/limits.d/90-hbase.conf src=security/limits.d/90-hbase.conf
+  template: dest=/etc/security/limits.d/90-hbase.conf src=security/limits.d/90-hbase.conf backup=yes
   register: ulimit_conf
   tags: ulimit
 
