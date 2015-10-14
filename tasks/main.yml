@@ -70,6 +70,12 @@
 #   # when: ulimit_conf.changed
 #   tags: ulimit
 
+- name: create {{ hbase_distr_prefix }}/lib/native
+  file: state=directory dest={{ hbase_distr_prefix }}/lib/native
+
+- name: create {{ hbase_distr_prefix }}/lib/native/Linux-amd64-64
+  file: state=directory dest={{ hbase_distr_prefix }}/lib/native/Linux-amd64-64
+
 - name: make a link to libhadoop.so
   file: state=link src={{ hadoop_distr_prefix }}/lib/native/libhadoop.so dest={{ hbase_distr_prefix }}/lib/native/Linux-amd64-64/libhadoop.so
 
