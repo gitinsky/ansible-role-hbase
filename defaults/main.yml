@@ -1,4 +1,5 @@
 ---
+hbase_heapsize: 4000
 hbase_version: 0.98.14
 hadoop_suffix: -hadoop2
 hbase_standalone: no
