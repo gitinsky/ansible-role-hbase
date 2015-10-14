@@ -26,13 +26,13 @@
 # into the startup scripts (bin/hbase, etc.)
 
 # The java implementation to use.  Java 1.6 required.
-export JAVA_HOME=/usr/java/jdk1.8.0_40
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 
 # Extra Java CLASSPATH elements.  Optional.
 # export HBASE_CLASSPATH=
 
 # The maximum amount of heap to use, in MB. Default is 1000.
-export HBASE_HEAPSIZE=4000
+export HBASE_HEAPSIZE={{ hbase_heapsize }}
 
 # Extra Java runtime options.
 # Below are what we set by default.  May only work with SUN JVM.

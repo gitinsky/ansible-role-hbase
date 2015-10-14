@@ -69,3 +69,9 @@
 #   # sudo_user: hadoop
 #   # when: ulimit_conf.changed
 #   tags: ulimit
+
+- name: make a link to libhadoop.so
+  file: state=link src={{ hadoop_distr_prefix }}/lib/native/libhadoop.so dest={{ hbase_distr_prefix }}/lib/native/Linux-amd64-64/libhadoop.so
+
+- name: make a link to libhdfs.so
+  file: state=link src={{ hadoop_distr_prefix }}/lib/native/libhdfs.so dest={{ hbase_distr_prefix }}/lib/native/Linux-amd64-64/libhdfs.so
