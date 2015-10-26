@@ -1,4 +1,4 @@
 ---
 dependencies:
-  - { role: oracle-jdk }
+  - { role: java }
   - { role: hadoop, when: not hbase_standalone }
