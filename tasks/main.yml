@@ -1,6 +1,6 @@
 ---
 - name: download HBase
-  command: bash -c "cd /root && wget http://apache-mirror.rbc.ru/pub/apache/hbase/{{ hbase_version }}/hbase-{{ hbase_version }}{{ hadoop_suffix }}-bin.tar.gz" creates=/root/hbase-{{ hbase_version }}{{ hadoop_suffix }}-bin.tar.gz
+  get_url: url="http://apache-mirror.rbc.ru/pub/apache/hbase/{{ hbase_version }}/hbase-{{ hbase_version }}{{ hadoop_suffix }}-bin.tar.gz" dest=/root/hbase-{{ hbase_version }}{{ hadoop_suffix }}-bin.tar.gz
 
 - name: unpack HBase
   command: bash -c "cd /opt && tar xzf /root/hbase-{{ hbase_version }}{{ hadoop_suffix }}-bin.tar.gz" creates=/opt/hbase-{{ hbase_version }}{{ hadoop_suffix }}
