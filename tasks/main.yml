@@ -1,6 +1,12 @@
 ---
 - name: download HBase
   get_url: url="http://apache-mirror.rbc.ru/pub/apache/hbase/{{ hbase_version }}/hbase-{{ hbase_version }}{{ hadoop_suffix }}-bin.tar.gz" dest=/root/hbase-{{ hbase_version }}{{ hadoop_suffix }}-bin.tar.gz
+  ignore_errors: true
+  register: result
+
+- name: try to get hbase from archive site if original one returns 404
+  get_url: url="http://archive.apache.org/dist/hbase/{{ hbase_version }}/hbase-{{ hbase_version }}{{ hadoop_suffix }}-bin.tar.gz" dest=/root/hbase-{{ hbase_version }}{{ hadoop_suffix }}-bin.tar.gz
+  when: result.failed and result.status_code is defined result.status_code == 404
 
 - name: unpack HBase
   command: bash -c "cd /opt && tar xzf /root/hbase-{{ hbase_version }}{{ hadoop_suffix }}-bin.tar.gz" creates=/opt/hbase-{{ hbase_version }}{{ hadoop_suffix }}

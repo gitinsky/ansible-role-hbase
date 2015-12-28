@@ -1,4 +1,5 @@
 ---
 dependencies:
   - { role: java }
+  - { role: eye }
   - { role: hadoop, when: not hbase_standalone }
