@@ -26,7 +26,7 @@
 # into the startup scripts (bin/hbase, etc.)
 
 # The java implementation to use.  Java 1.6 required.
-export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+export JAVA_HOME={{ hbase_java_home }}
 
 # Extra Java CLASSPATH elements.  Optional.
 # export HBASE_CLASSPATH=
