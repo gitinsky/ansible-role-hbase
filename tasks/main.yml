@@ -68,6 +68,7 @@
       regexp: '^\s{0,}session\s{1,}required\s{1,}pam_limits.so'
       line: 'session required  pam_limits.so'
   tags: ulimit
+  when: "ansible_os_family == 'Debian'"
       
   
 # - name: update ulimit
