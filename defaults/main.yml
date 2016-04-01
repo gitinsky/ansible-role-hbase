@@ -1,7 +1,7 @@
 ---
 hbase_heapsize: 4000
-hbase_version: 1.1.2
-hadoop_suffix: "-hadoop2"
+hbase_version: 1.1.4
+hadoop_suffix: ""
 hbase_standalone: no
 hbase_distr_prefix: /opt/hbase
 hbase_var_prefix: /var/hbase
