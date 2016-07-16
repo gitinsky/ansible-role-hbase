@@ -1,0 +1,2 @@
+monitorRole {{ hbase_jmx_monitorpass }}
+controlRole {{ hbase_jmx_controlpass }}

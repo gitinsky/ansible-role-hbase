@@ -39,6 +39,16 @@
   file: state=link src={{ hadoop_distr_prefix }}/conf/core-site.xml dest={{ hbase_distr_prefix }}/conf/core-site.xml
   when: not hbase_standalone
 
+- name: create {{ hbase_distr_prefix }}/conf/hadoop-metrics.properties
+  file: state=link src={{ hadoop_distr_prefix }}/conf/hadoop-metrics.properties dest={{ hbase_distr_prefix }}/conf/hadoop-metrics.properties
+  when: not hbase_standalone
+
+- name: put {{ hbase_distr_prefix }}/conf/jmxremote.access
+  template: src=hbase/jmxremote.access dest={{ hbase_distr_prefix }}/conf/jmxremote.access owner=root group=root mode=0644 backup=yes
+
+- name: put {{ hbase_distr_prefix }}/conf/jmxremote.passwd
+  template: src=hbase/jmxremote.passwd dest={{ hbase_distr_prefix }}/conf/jmxremote.passwd owner={{ hadoop_user }} group={{ hadoop_user }} mode=0600 backup=yes
+
 # - name: dirty start for a standalone hbase
 #   shell: /opt/hbase/bin/start-hbase.sh
 #   when: hbase_standalone
