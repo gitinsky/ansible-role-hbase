@@ -99,7 +99,7 @@
 
 <property>
     <name>hbase.hregion.majorcompaction</name>
-    <value>0</value>
+    <value>{{ hbase_majorcompaction_interval }}</value>
 </property>
 
 <property>
