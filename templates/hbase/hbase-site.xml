@@ -53,7 +53,6 @@
 </property>
 
 <property>
-       <!-- do not use in production -->
        <name>hbase.online.schema.update.enable</name>
        <value>true</value>
 </property>
