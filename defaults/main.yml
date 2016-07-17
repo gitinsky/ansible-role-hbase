@@ -15,3 +15,4 @@ zookeeper_peerport: 2888
 zookeeper_client_port: 2181
 hbase_thrift_port: 9090
 hbase_thrift_info_port: 9095
+hbase_scanner_timeout: 1200000

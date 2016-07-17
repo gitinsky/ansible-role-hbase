@@ -160,4 +160,9 @@
      <value>{{ hbase_thrift_info_port }}</value>
 </property>
 
+<property>
+     <name>hbase.client.scanner.timeout.period</name>
+     <value>{{ hbase_scanner_timeout }}</value>
+</property>
+
 </configuration>
