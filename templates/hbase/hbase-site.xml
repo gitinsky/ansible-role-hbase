@@ -48,6 +48,10 @@
        <value>0</value>
 </property>
 <property>
+       <name>hbase.thrift.minWorkerThreads</name>
+       <value>200</value>
+</property>
+<property>
        <name>hbase.regionserver.handler.count</name>
        <value>100</value>
 </property>
