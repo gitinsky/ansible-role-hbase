@@ -52,6 +52,10 @@
        <value>200</value>
 </property>
 <property>
+       <name>hbase.thrift.maxWorkerThreads</name>
+       <value>2000</value>
+</property>
+<property>
        <name>hbase.regionserver.handler.count</name>
        <value>100</value>
 </property>
