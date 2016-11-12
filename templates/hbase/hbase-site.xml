@@ -172,4 +172,9 @@
      <value>{{ hbase_scanner_timeout }}</value>
 </property>
 
+<property>
+     <name>hbase.rpc.timeout</name>
+     <value>{{ hbase_rpc_timeout }}</value>
+</property>
+
 </configuration>
