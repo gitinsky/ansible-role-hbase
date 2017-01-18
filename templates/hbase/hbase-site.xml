@@ -168,4 +168,9 @@
      <value>{{ hbase_scanner_timeout }}</value>
 </property>
 
+<property>
+     <name>phoenix.query.maxGlobalMemoryPercentage</name>
+     <value>{{ hbase_phoenix_memory_percentage }}</value>
+</property>
+
 </configuration>

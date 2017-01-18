@@ -1,7 +1,7 @@
 ---
 hbase_java_home: /usr/lib/jvm/java-8-oracle
 hbase_heapsize: 4000
-hbase_version: 1.2.2
+hbase_version: 1.2.4
 hadoop_suffix: ""
 hbase_standalone: no
 hbase_distr_prefix: /opt/hbase
@@ -17,3 +17,4 @@ hbase_thrift_port: 9090
 hbase_thrift_info_port: 9095
 hbase_scanner_timeout: 1200000
 hbase_majorcompaction_interval: 172800000
+hbase_phoenix_memory_percentage: 15
