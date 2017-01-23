@@ -52,6 +52,10 @@
        <value>200</value>
 </property>
 <property>
+       <name>hbase.thrift.maxWorkerThreads</name>
+       <value>2000</value>
+</property>
+<property>
        <name>hbase.regionserver.handler.count</name>
        <value>100</value>
 </property>
@@ -166,6 +170,11 @@
 <property>
      <name>hbase.client.scanner.timeout.period</name>
      <value>{{ hbase_scanner_timeout }}</value>
+</property>
+
+<property>
+     <name>hbase.rpc.timeout</name>
+     <value>{{ hbase_rpc_timeout }}</value>
 </property>
 
 <property>
