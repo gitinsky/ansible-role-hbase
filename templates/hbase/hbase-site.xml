@@ -52,6 +52,10 @@
        <value>200</value>
 </property>
 <property>
+       <name>hbase.thrift.maxWorkerThreads</name>
+       <value>2000</value>
+</property>
+<property>
        <name>hbase.regionserver.handler.count</name>
        <value>100</value>
 </property>
@@ -169,8 +173,21 @@
 </property>
 
 <property>
+     <name>hbase.rpc.timeout</name>
+     <value>{{ hbase_rpc_timeout }}</value>
+</property>
+
+<property>
      <name>phoenix.query.maxGlobalMemoryPercentage</name>
      <value>{{ hbase_phoenix_memory_percentage }}</value>
 </property>
 
+<property>
+     <name>phoenix.query.threadPoolSize</name>
+     <value>{{ hbase_phoenix_query_threadPoolSize }}</value>
+</property>
+<property>
+     <name>phoenix.query.queueSize</name>
+     <value>{{ hbase_phoenix_query_queueSize }}</value>
+</property>
 </configuration>

@@ -16,5 +16,8 @@ zookeeper_client_port: 2181
 hbase_thrift_port: 9090
 hbase_thrift_info_port: 9095
 hbase_scanner_timeout: 1200000
+hbase_rpc_timeout: 120000
 hbase_majorcompaction_interval: 172800000
 hbase_phoenix_memory_percentage: 15
+hbase_phoenix_query_threadPoolSize: 512
+hbase_phoenix_query_queueSize: 15000
