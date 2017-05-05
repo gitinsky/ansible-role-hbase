@@ -31,6 +31,9 @@
 - name: put {{ hbase_distr_prefix }}/conf/hbase-env.sh
   template: src=hbase/hbase-env.sh dest={{ hbase_distr_prefix }}/conf/hbase-env.sh owner=root group=root mode=0644 backup=yes
 
+- name: put {{ hbase_distr_prefix }}/conf/log4j.properties
+  template: src=hbase/log4j.properties dest={{ hbase_distr_prefix }}/conf/log4j.properties owner=root group=root mode=0644 backup=yes
+
 - name: create {{ hbase_distr_prefix }}/conf/hdfs-site.xml
   file: state=link src={{ hadoop_distr_prefix }}/conf/hdfs-site.xml dest={{ hbase_distr_prefix }}/conf/hdfs-site.xml
   when: not hbase_standalone
