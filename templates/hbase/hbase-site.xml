@@ -182,4 +182,12 @@
      <value>{{ hbase_phoenix_memory_percentage }}</value>
 </property>
 
+<property>
+     <name>phoenix.query.threadPoolSize</name>
+     <value>{{ hbase_phoenix_query_threadPoolSize }}</value>
+</property>
+<property>
+     <name>phoenix.query.queueSize</name>
+     <value>{{ hbase_phoenix_query_queueSize }}</value>
+</property>
 </configuration>
