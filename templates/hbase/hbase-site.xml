@@ -194,4 +194,8 @@
   <name>hbase.regionserver.wal.codec</name>
   <value>org.apache.hadoop.hbase.regionserver.wal.IndexedWALEditCodec</value>
 </property>
+<property>
+  <name>phoenix.query.timeoutMs</name>
+  <value>{{ hbase_phoenix_query_timeout }}</value>
+</property>
 </configuration>

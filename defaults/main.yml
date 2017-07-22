@@ -21,3 +21,4 @@ hbase_majorcompaction_interval: 172800000
 hbase_phoenix_memory_percentage: 15
 hbase_phoenix_query_threadPoolSize: 512
 hbase_phoenix_query_queueSize: 15000
+hbase_phoenix_query_timeout: 3600000
