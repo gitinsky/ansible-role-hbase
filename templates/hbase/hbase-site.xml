@@ -198,4 +198,8 @@
   <name>phoenix.query.timeoutMs</name>
   <value>{{ hbase_phoenix_query_timeout }}</value>
 </property>
+<property>
+  <name>phoenix.query.force.rowkeyorder</name>
+  <value>{{ hbase_phoenix_query_force_rowkeyorder }}</value>
+</property>
 </configuration>
