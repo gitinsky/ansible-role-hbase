@@ -1,5 +1,5 @@
 ---
-hbase_java_home: /usr/lib/jvm/java-8-oracle
+hbase_java_home: /usr/lib/jvm/java-8-openjdk-amd64
 hbase_heapsize: 4000
 hbase_version: 1.2.4
 hadoop_suffix: ""
