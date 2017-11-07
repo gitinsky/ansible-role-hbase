@@ -1,5 +1,5 @@
 ---
-hbase_java_home: /usr/lib/jvm/java-8-oracle
+hbase_java_home: /usr/lib/jvm/java-8-openjdk-amd64
 hbase_heapsize: 4000
 hbase_version: 1.2.4
 hadoop_suffix: ""
@@ -22,3 +22,4 @@ hbase_phoenix_memory_percentage: 15
 hbase_phoenix_query_threadPoolSize: 512
 hbase_phoenix_query_queueSize: 15000
 hbase_phoenix_query_timeout: 3600000
+hbase_phoenix_query_force_rowkeyorder: "true"
