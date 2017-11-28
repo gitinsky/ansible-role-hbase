@@ -202,4 +202,8 @@
   <name>phoenix.query.force.rowkeyorder</name>
   <value>{{ hbase_phoenix_query_force_rowkeyorder }}</value>
 </property>
+<property>
+  <name>phoenix.stats.guidepost.width</name>
+  <value>{{ hbase_phoenix_stats_guidepost_width }}</value>
+</property>
 </configuration>
