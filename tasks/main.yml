@@ -28,11 +28,14 @@
   register: hbase_site_xml
   when: not hbase_standalone
 
-- name: put {{ hbase_distr_prefix }}/conf/hbase-env.sh
+- name: put "{{ hbase_distr_prefix }}/conf/hbase-env.sh"
   template: src=hbase-env.sh dest={{ hbase_distr_prefix }}/conf/hbase-env.sh owner=root group=root mode=0644 backup=yes
 
-- name: put {{ hbase_distr_prefix }}/conf/log4j.properties
+- name: put "{{ hbase_distr_prefix }}/conf/log4j.properties"
   template: src=log4j.properties dest={{ hbase_distr_prefix }}/conf/log4j.properties owner=root group=root mode=0644 backup=yes
+
+- name: put "{{ hbase_distr_prefix }}/conf/hadoop-metrics2-hbase.properties"
+  template: src=hadoop-metrics2-hbase.properties dest={{ hbase_distr_prefix }}/conf/hadoop-metrics2-hbase.properties owner=root group=root mode=0644 backup=yes
 
 - name: create {{ hbase_distr_prefix }}/conf/hdfs-site.xml
   file: state=link src={{ hadoop_distr_prefix }}/conf/hdfs-site.xml dest={{ hbase_distr_prefix }}/conf/hdfs-site.xml
