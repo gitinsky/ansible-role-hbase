@@ -26,3 +26,4 @@ hbase_phoenix_query_timeout: 3600000
 hbase_phoenix_query_force_rowkeyorder: "true"
 phoenix_tracing_enabled: false
 hbase_phoenix_stats_guidepost_width: 104857600
+hbase_rs_jmxremote_port: 10102
