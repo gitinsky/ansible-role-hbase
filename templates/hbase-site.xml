@@ -190,6 +190,6 @@
 </property>
 <property>
     <name>hbase.regionserver.info.bindAddress</name>
-    <value>{{ ansible_hostname }}</value>
+    <value>{{ inventory_hostname }}</value>
 </property>
 </configuration>
