@@ -45,6 +45,14 @@
   file: state=link src={{ hadoop_distr_prefix }}/conf/core-site.xml dest={{ hbase_distr_prefix }}/conf/core-site.xml
   when: not hbase_standalone
 
+- name: create {{ hbase_distr_prefix }}/conf/mapred-site.xml
+  file: state=link src={{ hadoop_distr_prefix }}/conf/mapred-site.xml dest={{ hbase_distr_prefix }}/conf/mapred-site.xml
+  when: not hbase_standalone
+
+- name: create {{ hbase_distr_prefix }}/conf/yarn-site.xml
+  file: state=link src={{ hadoop_distr_prefix }}/conf/yarn-site.xml dest={{ hbase_distr_prefix }}/conf/yarn-site.xml
+  when: not hbase_standalone
+
 - name: create {{ hbase_distr_prefix }}/conf/hadoop-metrics.properties
   file: state=link src={{ hadoop_distr_prefix }}/conf/hadoop-metrics.properties dest={{ hbase_distr_prefix }}/conf/hadoop-metrics.properties
   when: not hbase_standalone
