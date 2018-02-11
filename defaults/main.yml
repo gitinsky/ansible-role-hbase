@@ -24,3 +24,4 @@ hbase_phoenix_query_queueSize: 15000
 hbase_phoenix_query_timeout: 3600000
 hbase_phoenix_query_force_rowkeyorder: "true"
 phoenix_tracing_enabled: false
+hbase_regionserver_handler_count: 100

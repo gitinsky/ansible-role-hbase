@@ -57,7 +57,7 @@
 </property>
 <property>
        <name>hbase.regionserver.handler.count</name>
-       <value>100</value>
+       <value>{{ hbase_regionserver_handler_count }}</value>
 </property>
 
 <property>
@@ -205,5 +205,13 @@
 <property>
   <name>phoenix.stats.guidepost.width</name>
   <value>{{ hbase_phoenix_stats_guidepost_width }}</value>
+</property>
+<property>
+  <name>phoenix.trace.frequency</name>
+  <value>always</value>
+</property>
+<property>
+  <name>hbase.storescanner.parallel.seek.enable</name>
+  <value>true</value>
 </property>
 </configuration>
