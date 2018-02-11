@@ -2,5 +2,5 @@
 dependencies:
   - { role: java, when: ansible_os_family == 'Debian', tags: ['dependent'] }
   - { role: oracle-jdk, when: ansible_os_family == 'RedHat', tags: ['dependent'] }
-  - { role: eye, eye_user: root, tags: ['dependent'] }
+  - { role: eye, eye_user: root, tags: ['dependent'], when: "ansible_os_family != 'Elbrus' and (not (ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'))" }
   - { role: hadoop, when: not hbase_standalone, tags: ['dependent'] }

@@ -9,10 +9,10 @@
   when: result|failed and result.status_code is defined and result.status_code == 404
 
 - name: unpack HBase
-  command: bash -c "cd /opt && tar xzf /root/hbase-{{ hbase_version }}{{ hadoop_suffix }}-bin.tar.gz" creates=/opt/hbase-{{ hbase_version }}{{ hadoop_suffix }}
+  unarchive: copy=no src="/root/hbase-{{ hbase_version }}{{ hadoop_suffix }}-bin.tar.gz" dest={{ hbase_unarchive_prefix }}
 
 - name: create {{ hbase_distr_prefix }}
-  shell: cp -r /opt/hbase-{{ hbase_version }}{{ hadoop_suffix }} {{ hbase_distr_prefix }} creates={{ hbase_distr_prefix }}
+  shell: cp -r {{ hbase_unarchive_prefix }}/hbase-{{ hbase_version }}{{ hadoop_suffix }} {{ hbase_distr_prefix }} creates={{ hbase_distr_prefix }}
 
 - name: add Hadoop user
   user: name={{ hadoop_user }} shell=/usr/sbin/nologin state=present
@@ -47,6 +47,14 @@
 
 - name: create {{ hbase_distr_prefix }}/conf/core-site.xml
   file: state=link src={{ hadoop_distr_prefix }}/conf/core-site.xml dest={{ hbase_distr_prefix }}/conf/core-site.xml
+  when: not hbase_standalone
+
+- name: create {{ hbase_distr_prefix }}/conf/mapred-site.xml
+  file: state=link src={{ hadoop_distr_prefix }}/conf/mapred-site.xml dest={{ hbase_distr_prefix }}/conf/mapred-site.xml
+  when: not hbase_standalone
+
+- name: create {{ hbase_distr_prefix }}/conf/yarn-site.xml
+  file: state=link src={{ hadoop_distr_prefix }}/conf/yarn-site.xml dest={{ hbase_distr_prefix }}/conf/yarn-site.xml
   when: not hbase_standalone
 
 - name: create {{ hbase_distr_prefix }}/conf/hadoop-metrics.properties

@@ -1,7 +1,8 @@
 ---
+hbase_unarchive_prefix: /opt
 hbase_java_home: /usr/lib/jvm/java-8-openjdk-amd64
 hbase_heapsize: 4000
-hbase_version: 1.2.4
+hbase_version: 1.3.1
 hadoop_suffix: ""
 hbase_standalone: no
 hbase_distr_prefix: /opt/hbase
@@ -25,3 +26,5 @@ hbase_phoenix_query_timeout: 3600000
 hbase_phoenix_query_force_rowkeyorder: "true"
 phoenix_tracing_enabled: false
 hbase_regionserver_handler_count: 100
+hbase_phoenix_stats_guidepost_width: 104857600
+hbase_rs_jmxremote_port: 10102

@@ -94,117 +94,103 @@
     <name>hbase.regionserver.checksum.verify</name>
     <value>true</value>
 </property>
-
 <property>
     <name>hbase.snapshot.enabled</name>
     <value>true</value>
 </property>
-
 <property>
     <name>hbase.hstore.compaction.min.size</name>
     <value>152400000</value>
 </property>
-
 <property>
     <name>hbase.hregion.majorcompaction</name>
     <value>{{ hbase_majorcompaction_interval }}</value>
 </property>
-
 <property>
     <name>hbase.hstore.compaction.max.size</name>
     <value>524288000</value>
 </property>
-
 <property>
     <name>hbase.master.info.port</name>
     <value>{{ hbase_master_info_port }}</value>
 </property>
-
 <property>
     <name>hbase.regionserver.port</name>
     <value>{{ hbase_regionserver_port }}</value>
 </property>
-
 <property>
     <name>hbase.master.port</name>
     <value>{{ hbase_master_port }}</value>
 </property>
-
 <property>
     <name>hbase.zookeeper.leaderport</name>
     <value>{{ zookeeper_leaderport }}</value>
 </property>
-
 <property>
     <name>hbase.zookeeper.peerport</name>
     <value>{{ zookeeper_peerport }}</value>
 </property>
-
 <property>
     <name>hbase.zookeeper.property.clientPort</name>
     <value>{{ zookeeper_client_port }}</value>
 </property>
-
 <property>
     <name>hbase.regionserver.info.port</name>
     <value>{{ hbase_regionserver_info_port }}</value>
 </property>
-
 {% if hbase_regionserver_thrift_framed is defined and hbase_regionserver_thrift_framed %}
 <property>
-     <name>hbase.regionserver.thrift.framed</name>
-     <value>true</value>
+    <name>hbase.regionserver.thrift.framed</name>
+    <value>true</value>
  </property>
 {% endif %}
-
 <property>
-     <name>hbase.regionserver.thrift.port</name>
-     <value>{{ hbase_thrift_port }}</value>
-</property>
-
-<property>
-     <name>hbase.thrift.info.port</name>
-     <value>{{ hbase_thrift_info_port }}</value>
-</property>
-
-<property>
-     <name>hbase.client.scanner.timeout.period</name>
-     <value>{{ hbase_scanner_timeout }}</value>
-</property>
-
-<property>
-     <name>hbase.rpc.timeout</name>
-     <value>{{ hbase_rpc_timeout }}</value>
-</property>
-
-<property>
-     <name>phoenix.query.maxGlobalMemoryPercentage</name>
-     <value>{{ hbase_phoenix_memory_percentage }}</value>
-</property>
-
-<property>
-     <name>phoenix.query.threadPoolSize</name>
-     <value>{{ hbase_phoenix_query_threadPoolSize }}</value>
+    <name>hbase.regionserver.thrift.port</name>
+    <value>{{ hbase_thrift_port }}</value>
 </property>
 <property>
-     <name>phoenix.query.queueSize</name>
-     <value>{{ hbase_phoenix_query_queueSize }}</value>
+    <name>hbase.thrift.info.port</name>
+    <value>{{ hbase_thrift_info_port }}</value>
 </property>
 <property>
-  <name>hbase.regionserver.wal.codec</name>
-  <value>org.apache.hadoop.hbase.regionserver.wal.IndexedWALEditCodec</value>
+    <name>hbase.client.scanner.timeout.period</name>
+    <value>{{ hbase_scanner_timeout }}</value>
 </property>
 <property>
-  <name>phoenix.query.timeoutMs</name>
-  <value>{{ hbase_phoenix_query_timeout }}</value>
+    <name>hbase.rpc.timeout</name>
+    <value>{{ hbase_rpc_timeout }}</value>
 </property>
 <property>
-  <name>phoenix.query.force.rowkeyorder</name>
-  <value>{{ hbase_phoenix_query_force_rowkeyorder }}</value>
+    <name>phoenix.query.maxGlobalMemoryPercentage</name>
+    <value>{{ hbase_phoenix_memory_percentage }}</value>
 </property>
 <property>
-  <name>phoenix.stats.guidepost.width</name>
-  <value>{{ hbase_phoenix_stats_guidepost_width }}</value>
+    <name>phoenix.query.threadPoolSize</name>
+    <value>{{ hbase_phoenix_query_threadPoolSize }}</value>
+</property>
+<property>
+    <name>phoenix.query.queueSize</name>
+    <value>{{ hbase_phoenix_query_queueSize }}</value>
+</property>
+<property>
+    <name>hbase.regionserver.wal.codec</name>
+    <value>org.apache.hadoop.hbase.regionserver.wal.IndexedWALEditCodec</value>
+</property>
+<property>
+    <name>phoenix.query.timeoutMs</name>
+    <value>{{ hbase_phoenix_query_timeout }}</value>
+</property>
+<property>
+    <name>phoenix.query.force.rowkeyorder</name>
+    <value>{{ hbase_phoenix_query_force_rowkeyorder }}</value>
+</property>
+<property>
+    <name>phoenix.stats.guidepost.width</name>
+    <value>{{ hbase_phoenix_stats_guidepost_width }}</value>
+</property>
+<property>
+    <name>hbase.regionserver.info.bindAddress</name>
+    <value>{{ inventory_hostname }}</value>
 </property>
 <property>
   <name>phoenix.trace.frequency</name>
