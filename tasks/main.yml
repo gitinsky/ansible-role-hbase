@@ -73,7 +73,7 @@
   when: not hbase_standalone and phoenix_tracing_enabled
 
 - name: create /etc/hbase-{{ env_name }}/hdfs-site.xml
-  file: state=link src={{ hadoop_distr_prefix }}/conf/hdfs-site.xml dest=/etc/hbase-{{ env_name }}/hdfs-site.xml
+  file: state=link src=/etc/hadoop-{{ env_name }}/hdfs-site.xml dest=/etc/hbase-{{ env_name }}/hdfs-site.xml
   when: not hbase_standalone
 
 - name: create {{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/hdfs-site.xml
@@ -81,7 +81,7 @@
   when: not hbase_standalone
 
 - name: create /etc/hbase-{{ env_name }}/core-site.xml
-  file: state=link src={{ hadoop_distr_prefix }}/conf/core-site.xml dest=/etc/hbase-{{ env_name }}/core-site.xml
+  file: state=link src=/etc/hadoop-{{ env_name }}/core-site.xml dest=/etc/hbase-{{ env_name }}/core-site.xml
   when: not hbase_standalone
 
 - name: create {{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/core-site.xml
@@ -89,7 +89,7 @@
   when: not hbase_standalone
 
 - name: create /etc/hbase-{{ env_name }}/mapred-site.xml
-  file: state=link src={{ hadoop_distr_prefix }}/conf/mapred-site.xml dest=/etc/hbase-{{ env_name }}/mapred-site.xml
+  file: state=link src=/etc/hadoop-{{ env_name }}/mapred-site.xml dest=/etc/hbase-{{ env_name }}/mapred-site.xml
   when: not hbase_standalone
 
 - name: create {{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/mapred-site.xml
@@ -97,7 +97,7 @@
   when: not hbase_standalone
 
 - name: create /etc/hbase-{{ env_name }}/yarn-site.xml
-  file: state=link src={{ hadoop_distr_prefix }}/conf/yarn-site.xml dest=/etc/hbase-{{ env_name }}/yarn-site.xml
+  file: state=link src=/etc/hadoop-{{ env_name }}/yarn-site.xml dest=/etc/hbase-{{ env_name }}/yarn-site.xml
   when: not hbase_standalone
 
 - name: create {{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/yarn-site.xml
@@ -105,7 +105,7 @@
   when: not hbase_standalone
 
 - name: create /etc/hbase-{{ env_name }}/hadoop-metrics.properties
-  file: state=link src={{ hadoop_distr_prefix }}/conf/hadoop-metrics.properties dest=/etc/hbase-{{ env_name }}/hadoop-metrics.properties
+  file: state=link src=/etc/hadoop-{{ env_name }}/hadoop-metrics.properties dest=/etc/hbase-{{ env_name }}/hadoop-metrics.properties
   when: not hbase_standalone
 
 - name: create {{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/hadoop-metrics.properties
@@ -171,9 +171,9 @@
   file: state=directory dest={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/lib/native/Linux-amd64-64
 
 - name: make a link to libhadoop.so
-  file: state=link src={{ hadoop_distr_prefix }}/lib/native/libhadoop.so dest={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/lib/native/Linux-amd64-64/libhadoop.so
+  file: state=link src={{ hadoop_distr_prefix }}-{{ env_name }}-{{ hadoop_version }}/lib/native/libhadoop.so dest={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/lib/native/Linux-amd64-64/libhadoop.so
   when: not hbase_standalone
 
 - name: make a link to libhdfs.so
-  file: state=link src={{ hadoop_distr_prefix }}/lib/native/libhdfs.so dest={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/lib/native/Linux-amd64-64/libhdfs.so
+  file: state=link src={{ hadoop_distr_prefix }}-{{ env_name }}-{{ hadoop_version }}/lib/native/libhdfs.so dest={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/lib/native/Linux-amd64-64/libhdfs.so
   when: not hbase_standalone
