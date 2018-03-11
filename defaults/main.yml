@@ -3,7 +3,7 @@ env_name: default
 hbase_unarchive_prefix: /opt
 hbase_java_home: /usr/lib/jvm/java-8-openjdk-amd64
 hbase_heapsize: 4000
-hbase_version: 1.4.1
+hbase_version: 1.4.2
 hadoop_suffix: ""
 hbase_standalone: no
 hbase_distr_prefix: /opt/hbase
