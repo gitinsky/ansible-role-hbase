@@ -190,7 +190,7 @@
 </property>
 <property>
     <name>hbase.regionserver.info.bindAddress</name>
-    <value>{{ inventory_hostname }}</value>
+    <value>{{ ansible_host }}</value>
 </property>
 <property>
     <name>phoenix.trace.frequency</name>
