@@ -14,6 +14,9 @@
 - name: create {{ hbase_distr_prefix }}
   shell: rsync -av --exclude=conf/ {{ hbase_unarchive_prefix }}/hbase-{{ hbase_version }}{{ hadoop_suffix }}/ {{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/ creates="{{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}"
 
+- name: create a -current link
+  file: state=link src={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }} dest={{ hbase_distr_prefix }}-{{ env_name }}-current
+
 - name: add Hadoop user
   user: name={{ hadoop_user }} shell=/usr/sbin/nologin state=present
 
