@@ -208,4 +208,8 @@
     <name>hbase.client.scanner.max.result.size</name>
     <value>{{ hbase_client_scanner_max_result_size }}</value>
 </property>
+<property>
+    <name>phoenix.coprocessor.maxServerCacheTimeToLiveMs</name>
+    <value>60000</value>
+</property>
 </configuration>
