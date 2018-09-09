@@ -129,6 +129,13 @@
   file: state=link src=/etc/hbase-{{ env_name }}/jmxremote.passwd dest={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/jmxremote.passwd
   when: not hbase_standalone
 
+- name: put "/etc/hbase-{{ env_name }}/jmx_prometheus_javaagent.yaml"
+  template: src=jmx_prometheus_javaagent.yaml dest=/etc/hbase-{{ env_name }}/jmx_prometheus_javaagent.yaml owner=root group=root mode=0644 backup=yes
+
+- name: create {{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/jmx_prometheus_javaagent.yaml
+  file: state=link src=/etc/hbase-{{ env_name }}/jmx_prometheus_javaagent.yaml dest={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/jmx_prometheus_javaagent.yaml
+  when: not hbase_standalone
+
 # - name: dirty start for a standalone hbase
 #   shell: /opt/hbase/bin/start-hbase.sh
 #   when: hbase_standalone
@@ -159,8 +166,8 @@
       line: 'session required  pam_limits.so'
   tags: ulimit
   when: "ansible_os_family == 'Debian'"
-      
-  
+
+
 # - name: update ulimit
 #   shell: ulimit -n 65536
 #   # sudo_user: hadoop
@@ -180,3 +187,6 @@
 - name: make a link to libhdfs.so
   file: state=link src={{ hadoop_distr_prefix }}-{{ env_name }}-{{ hadoop_version }}/lib/native/libhdfs.so dest={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/lib/native/Linux-amd64-64/libhdfs.so
   when: not hbase_standalone
+
+- name: download the Prom JMX exporter
+  get_url: url="https://repo1.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.3.1/jmx_prometheus_javaagent-0.3.1.jar" dest={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/lib/jmx_prometheus_javaagent-0.3.1.jar
