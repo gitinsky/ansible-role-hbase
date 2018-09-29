@@ -23,72 +23,68 @@
 -->
 <configuration>
 <property>
-        <name>hbase.rootdir</name>
-        <value>hdfs://{{ hdfs_nameservice_id }}/hbase</value>
+    <name>hbase.rootdir</name>
+    <value>hdfs://{{ hdfs_nameservice_id }}/hbase</value>
 </property>
 <property>
-        <name>hbase.cluster.distributed</name>
-        <value>true</value>
+    <name>hbase.cluster.distributed</name>
+    <value>true</value>
 </property>
 <property>
-        <name>hbase.tmp.dir</name>
-        <value>{{ hbase_var_prefix }}</value>
+    <name>hbase.tmp.dir</name>
+    <value>{{ hbase_var_prefix }}</value>
 </property>
 <property>
-        <name>hbase.zookeeper.quorum</name>
-        <value>{{ zookeeper_quorum }}</value>
+    <name>hbase.zookeeper.quorum</name>
+    <value>{{ zookeeper_quorum }}</value>
 </property>
 <property>
-        <name>hbase.client.keyvalue.maxsize</name>
-        <value>209715200</value> <!-- 200 MB -->
-        <description>Specifies the combined maximum allowed size of a KeyValue instance. This is to set an upper boundary for a single entry saved in a storage file. Since they cannot be split it helps avoiding that a region cannot be split any further because the data is too large. It seems wise to set this to a fraction of the maximum region size. Setting it to zero or less disables the check. </description>
+    <name>hbase.client.keyvalue.maxsize</name>
+    <value>209715200</value> <!-- 200 MB -->
+    <description>Specifies the combined maximum allowed size of a KeyValue instance. This is to set an upper boundary for a single entry saved in a storage file. Since they cannot be split it helps avoiding that a region cannot be split any further because the data is too large. It seems wise to set this to a fraction of the maximum region size. Setting it to zero or less disables the check. </description>
 </property>
 <property>
-       <name>hbase.thrift.maxQueuedRequests</name>
-       <value>0</value>
+    <name>hbase.thrift.maxQueuedRequests</name>
+    <value>0</value>
 </property>
 <property>
-       <name>hbase.thrift.minWorkerThreads</name>
-       <value>200</value>
+    <name>hbase.thrift.minWorkerThreads</name>
+    <value>200</value>
 </property>
 <property>
-       <name>hbase.thrift.maxWorkerThreads</name>
-       <value>2000</value>
+    <name>hbase.thrift.maxWorkerThreads</name>
+    <value>2000</value>
 </property>
 <property>
-       <name>hbase.regionserver.handler.count</name>
-       <value>{{ hbase_regionserver_handler_count }}</value>
+    <name>hbase.regionserver.handler.count</name>
+    <value>{{ hbase_regionserver_handler_count }}</value>
 </property>
-
 <property>
-       <name>hbase.online.schema.update.enable</name>
-       <value>true</value>
+    <name>hbase.online.schema.update.enable</name>
+    <value>true</value>
 </property>
-
 <!-- 
          WAL
 -->
 <property>
-       <name>hbase.regionserver.optionallogflushinterval</name>
-       <value>1000</value>
+    <name>hbase.regionserver.optionallogflushinterval</name>
+    <value>1000</value>
 </property>
-
 <!--
          Memory usage
 -->
 <property>
-       <name>hbase.regionserver.global.memstore.upperLimit</name>
-       <value>0.4</value>
+    <name>hbase.regionserver.global.memstore.upperLimit</name>
+    <value>0.4</value>
 </property>
 <property>
-       <name>hbase.regionserver.global.memstore.lowerLimit</name>
-       <value>0.35</value>
+    <name>hbase.regionserver.global.memstore.lowerLimit</name>
+    <value>0.35</value>
 </property>
 <property>
-       <name>hfile.block.cache.size</name>
-       <value>0.25</value>
+    <name>hfile.block.cache.size</name>
+    <value>0.25</value>
 </property>
-
 <property>
     <!-- @see https://issues.apache.org/jira/browse/HBASE-5074 -->
     <name>hbase.regionserver.checksum.verify</name>
