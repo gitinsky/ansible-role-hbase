@@ -169,6 +169,10 @@
     <value>{{ hbase_phoenix_query_queueSize }}</value>
 </property>
 <property>
+    <name>phoenix.index.failure.unhandled.killserver</name>
+    <value>{{ phoenix_index_failure }}</value>
+</property>
+<property>
     <name>hbase.regionserver.wal.codec</name>
     <value>org.apache.hadoop.hbase.regionserver.wal.IndexedWALEditCodec</value>
 </property>
