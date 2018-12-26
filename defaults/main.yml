@@ -4,7 +4,7 @@ hbase_unarchive_prefix: /opt
 hbase_java_home: /usr/lib/jvm/java-8-openjdk-amd64
 hbase_heapsize: 4000
 hbase_master_heapsize: 2000
-hbase_version: 1.4.8
+hbase_version: 1.4.9
 hadoop_suffix: ""
 hbase_standalone: no
 hbase_distr_prefix: /opt/hbase
