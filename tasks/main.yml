@@ -6,7 +6,7 @@
 
 - name: try to get hbase from archive site if original one returns 404
   get_url: url="http://archive.apache.org/dist/hbase/{{ hbase_version }}/hbase-{{ hbase_version }}{{ hadoop_suffix }}-bin.tar.gz" dest=/root/hbase-{{ hbase_version }}{{ hadoop_suffix }}-bin.tar.gz
-  when: result|failed and result.status_code is defined and result.status_code == 404
+  when: result is failed and result.status_code is defined and result.status_code == 404
 
 - name: unpack HBase
   unarchive: copy=no src="/root/hbase-{{ hbase_version }}{{ hadoop_suffix }}-bin.tar.gz" dest={{ hbase_unarchive_prefix }}
