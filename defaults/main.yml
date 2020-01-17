@@ -5,6 +5,8 @@ hbase_java_home: /usr/lib/jvm/java-8-openjdk-amd64
 hbase_heapsize: 4000
 hbase_master_heapsize: 2000
 hbase_version: 2.1.8
+hbase_checksum_algo: sha512
+hbase_checksum: 86aa79fa5aed5ceb7cdc3e4f2911c91340be99b212b932c7b161b5836dcb322ba90fa6778ef05e866f33e030f3b180aa28b96edc5e2cf428a3842f927d6827cf
 hadoop_suffix: ""
 hbase_standalone: no
 hbase_distr_prefix: /opt/hbase
