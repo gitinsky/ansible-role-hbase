@@ -16,12 +16,14 @@
 
 - name: unpack HBase
   unarchive: copy=no src="/root/hbase-{{ hbase_version }}{{ hadoop_suffix }}-bin.tar.gz" dest={{ hbase_unarchive_prefix }}
+  when: not ansible_check_mode
 
 - name: create {{ hbase_distr_prefix }}
   shell: rsync -av --exclude=conf/ {{ hbase_unarchive_prefix }}/hbase-{{ hbase_version }}{{ hadoop_suffix }}/ {{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/ creates="{{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}"
 
 - name: create a -current link
   file: state=link src={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }} dest={{ hbase_distr_prefix }}-{{ env_name }}-current
+  when: not ansible_check_mode
 
 - name: add Hadoop user
   user: name={{ hadoop_user }} shell=/usr/sbin/nologin state=present
@@ -42,28 +44,28 @@
 
 - name: create {{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/hbase-site.xml
   file: state=link src=/etc/hbase-{{ env_name }}/hbase-site.xml dest={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/hbase-site.xml
-  when: not hbase_standalone
+  when: not hbase_standalone and not ansible_check_mode
 
 - name: put "/etc/hbase-{{ env_name }}/hbase-env.sh"
   template: src=hbase-env.sh dest=/etc/hbase-{{ env_name }}/hbase-env.sh owner=root group=root mode=0644 backup=yes
 
 - name: create {{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/hbase-env.sh
   file: state=link src=/etc/hbase-{{ env_name }}/hbase-env.sh dest={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/hbase-env.sh
-  when: not hbase_standalone
+  when: not hbase_standalone and not ansible_check_mode
 
 - name: put "/etc/hbase-{{ env_name }}/hbase-policy.xml"
   template: src=hbase-policy.xml dest=/etc/hbase-{{ env_name }}/hbase-policy.xml owner=root group=root mode=0644 backup=yes
 
 - name: create {{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/hbase-policy.xml
   file: state=link src=/etc/hbase-{{ env_name }}/hbase-policy.xml dest={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/hbase-policy.xml
-  when: not hbase_standalone
+  when: not hbase_standalone and not ansible_check_mode
 
 - name: put "/etc/hbase-{{ env_name }}/log4j.properties"
   template: src=log4j.properties dest=/etc/hbase-{{ env_name }}/log4j.properties owner=root group=root mode=0644 backup=yes
 
 - name: create {{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/log4j.properties
   file: state=link src=/etc/hbase-{{ env_name }}/log4j.properties dest={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/log4j.properties
-  when: not hbase_standalone
+  when: not hbase_standalone and not ansible_check_mode
 
 - name: put "/etc/hbase-{{ env_name }}/hadoop-metrics2-hbase.properties"
   template: src=hadoop-metrics2-hbase.properties dest=/etc/hbase-{{ env_name }}/hadoop-metrics2-hbase.properties owner=root group=root mode=0644 backup=yes
@@ -71,7 +73,7 @@
 
 - name: create {{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/hadoop-metrics2-hbase.properties
   file: state=link src=/etc/hbase-{{ env_name }}/hadoop-metrics2-hbase.properties dest={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/hadoop-metrics2-hbase.properties
-  when: not hbase_standalone
+  when: not hbase_standalone and not ansible_check_mode
 
 - name: put /etc/hbase-{{ env_name }}/hadoop-metrics2-phoenix.properties
   template: src=hadoop-metrics2-phoenix.properties dest=/etc/hbase-{{ env_name }}/hadoop-metrics2-phoenix.properties owner=root group=root mode=0644 backup=yes
@@ -79,68 +81,68 @@
 
 - name: create {{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/hadoop-metrics2-phoenix.properties
   file: state=link src=/etc/hbase-{{ env_name }}/hadoop-metrics2-phoenix.properties dest={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/hadoop-metrics2-phoenix.properties
-  when: not hbase_standalone and phoenix_tracing_enabled
+  when: not hbase_standalone and phoenix_tracing_enabled and not ansible_check_mode
 
 - name: create /etc/hbase-{{ env_name }}/hdfs-site.xml
   file: state=link src=/etc/hadoop-{{ env_name }}/hdfs-site.xml dest=/etc/hbase-{{ env_name }}/hdfs-site.xml
-  when: not hbase_standalone
+  when: not hbase_standalone and not ansible_check_mode
 
 - name: create {{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/hdfs-site.xml
   file: state=link src=/etc/hbase-{{ env_name }}/hdfs-site.xml dest={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/hdfs-site.xml
-  when: not hbase_standalone
+  when: not hbase_standalone and not ansible_check_mode
 
 - name: create /etc/hbase-{{ env_name }}/core-site.xml
   file: state=link src=/etc/hadoop-{{ env_name }}/core-site.xml dest=/etc/hbase-{{ env_name }}/core-site.xml
-  when: not hbase_standalone
+  when: not hbase_standalone and not ansible_check_mode
 
 - name: create {{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/core-site.xml
   file: state=link src=/etc/hbase-{{ env_name }}/core-site.xml dest={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/core-site.xml
-  when: not hbase_standalone
+  when: not hbase_standalone and not ansible_check_mode
 
 - name: create /etc/hbase-{{ env_name }}/mapred-site.xml
   file: state=link src=/etc/hadoop-{{ env_name }}/mapred-site.xml dest=/etc/hbase-{{ env_name }}/mapred-site.xml
-  when: not hbase_standalone
+  when: not hbase_standalone and not ansible_check_mode
 
 - name: create {{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/mapred-site.xml
   file: state=link src=/etc/hbase-{{ env_name }}/mapred-site.xml dest={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/mapred-site.xml
-  when: not hbase_standalone
+  when: not hbase_standalone and not ansible_check_mode
 
 - name: create /etc/hbase-{{ env_name }}/yarn-site.xml
   file: state=link src=/etc/hadoop-{{ env_name }}/yarn-site.xml dest=/etc/hbase-{{ env_name }}/yarn-site.xml
-  when: not hbase_standalone
+  when: not hbase_standalone and not ansible_check_mode
 
 - name: create {{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/yarn-site.xml
   file: state=link src=/etc/hbase-{{ env_name }}/yarn-site.xml dest={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/yarn-site.xml
-  when: not hbase_standalone
+  when: not hbase_standalone and not ansible_check_mode
 
 - name: create /etc/hbase-{{ env_name }}/hadoop-metrics.properties
   file: state=link src=/etc/hadoop-{{ env_name }}/hadoop-metrics.properties dest=/etc/hbase-{{ env_name }}/hadoop-metrics.properties
-  when: not hbase_standalone
+  when: not hbase_standalone and not ansible_check_mode
 
 - name: create {{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/hadoop-metrics.properties
   file: state=link src=/etc/hbase-{{ env_name }}/hadoop-metrics.properties dest={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/hadoop-metrics.properties
-  when: not hbase_standalone
+  when: not hbase_standalone and not ansible_check_mode
 
 - name: put /etc/hbase-{{ env_name }}/jmxremote.access
   template: src=jmxremote.access dest=/etc/hbase-{{ env_name }}/jmxremote.access owner=root group=root mode=0644 backup=yes
 
 - name: create {{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/jmxremote.access
   file: state=link src=/etc/hbase-{{ env_name }}/jmxremote.access dest={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/jmxremote.access
-  when: not hbase_standalone
+  when: not hbase_standalone and not ansible_check_mode
 
 - name: put /etc/hbase-{{ env_name }}/jmxremote.passwd
   template: src=jmxremote.passwd dest=/etc/hbase-{{ env_name }}/jmxremote.passwd owner={{ hadoop_user }} group={{ hadoop_user }} mode=0600 backup=yes
 
 - name: create {{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/jmxremote.passwd
   file: state=link src=/etc/hbase-{{ env_name }}/jmxremote.passwd dest={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/jmxremote.passwd
-  when: not hbase_standalone
+  when: not hbase_standalone and not ansible_check_mode
 
 - name: put "/etc/hbase-{{ env_name }}/jmx_prometheus_javaagent.yaml"
   template: src=jmx_prometheus_javaagent.yaml dest=/etc/hbase-{{ env_name }}/jmx_prometheus_javaagent.yaml owner=root group=root mode=0644 backup=yes
 
 - name: create {{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/jmx_prometheus_javaagent.yaml
   file: state=link src=/etc/hbase-{{ env_name }}/jmx_prometheus_javaagent.yaml dest={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/jmx_prometheus_javaagent.yaml
-  when: not hbase_standalone
+  when: not hbase_standalone and not ansible_check_mode
 
 # - name: dirty start for a standalone hbase
 #   shell: /opt/hbase/bin/start-hbase.sh
@@ -188,11 +190,12 @@
 
 - name: make a link to libhadoop.so
   file: state=link src={{ hadoop_distr_prefix }}-{{ env_name }}-{{ hadoop_version }}/lib/native/libhadoop.so dest={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/lib/native/Linux-amd64-64/libhadoop.so
-  when: not hbase_standalone
+  when: not hbase_standalone and not ansible_check_mode
 
 - name: make a link to libhdfs.so
   file: state=link src={{ hadoop_distr_prefix }}-{{ env_name }}-{{ hadoop_version }}/lib/native/libhdfs.so dest={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/lib/native/Linux-amd64-64/libhdfs.so
-  when: not hbase_standalone
+  when: not hbase_standalone and not ansible_check_mode
 
 - name: download the Prom JMX exporter
   get_url: url="https://repo1.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.3.1/jmx_prometheus_javaagent-0.3.1.jar" dest={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/lib/jmx_prometheus_javaagent-0.3.1.jar
+  when: not ansible_check_mode
