@@ -262,10 +262,12 @@
     <name>hbase.hstore.compaction.max</name>
     <value>{{ hbase_hstore_compaction_max }}</value>
 </property>
+{% if hbase_regionserver_throughput_controller is defined %}
 <property>
     <name>hbase.regionserver.throughput.controller</name>
     <value>{{ hbase_regionserver_throughput_controller }}</value>
 </property>
+{% endif %}
 <property>
     <name>hfile.block.cache.policy</name>
     <value>{{ hfile_block_cache_policy }}</value>
