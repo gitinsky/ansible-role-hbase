@@ -173,7 +173,6 @@
     <name>phoenix.index.failure.unhandled.killserver</name>
     <value>{{ phoenix_index_failure }}</value>
 </property>
-{% endif %}
 <property>
     <name>hbase.regionserver.wal.codec</name>
     <value>org.apache.hadoop.hbase.regionserver.wal.IndexedWALEditCodec</value>
@@ -188,7 +187,6 @@
     <value>org.apache.hadoop.hbase.ipc.controller.ServerRpcControllerFactory</value>
     <description>Factory to create the Phoenix RPC Scheduler that uses separate queues for index and metadata updates</description>
 </property>
-{% if phoenix_enabled %}
 <property>
     <name>phoenix.query.timeoutMs</name>
     <value>{{ hbase_phoenix_query_timeout }}</value>
@@ -212,7 +210,7 @@
 {% endif %}
 <property>
     <name>hbase.regionserver.info.bindAddress</name>
-    <value>{{ ansible_host }}</value>
+    <value>{{ hbase_regionserver_info_bindaddress }}</value>
 </property>
 <property>
     <name>hbase.storescanner.parallel.seek.enable</name>
@@ -228,6 +226,6 @@
 </property>
 <property>
     <name>hbase.regionserver.region.split.policy</name>
-    <value>org.apache.hadoop.hbase.regionserver.ConstantSizeRegionSplitPolicy</value>
+    <value>{{ hbase_regionserver_region_split_policy }}</value>
 </property>
 </configuration>

@@ -43,3 +43,5 @@ hbase_thrift_maxworkerthreads: 2000
 hfile_block_cache_size: 0.25
 hbase_hstore_compaction_min_size: 152400000
 hbase_hstore_compaction_max_size: 524288000
+hbase_regionserver_info_bindaddress: "{{ ansible_host }}"
+hbase_regionserver_region_split_policy: "org.apache.hadoop.hbase.regionserver.ConstantSizeRegionSplitPolicy"
