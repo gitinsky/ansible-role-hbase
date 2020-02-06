@@ -101,19 +101,19 @@
 
 - name: create /etc/hbase-{{ env_name }}/mapred-site.xml
   file: state=link src=/etc/hadoop-{{ env_name }}/mapred-site.xml dest=/etc/hbase-{{ env_name }}/mapred-site.xml
-  when: not hbase_standalone and not ansible_check_mode
+  when: not hbase_standalone and not ansible_check_mode and not disable_yarn
 
 - name: create {{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/mapred-site.xml
   file: state=link src=/etc/hbase-{{ env_name }}/mapred-site.xml dest={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/mapred-site.xml
-  when: not hbase_standalone and not ansible_check_mode
+  when: not hbase_standalone and not ansible_check_mode and not disable_yarn
 
 - name: create /etc/hbase-{{ env_name }}/yarn-site.xml
   file: state=link src=/etc/hadoop-{{ env_name }}/yarn-site.xml dest=/etc/hbase-{{ env_name }}/yarn-site.xml
-  when: not hbase_standalone and not ansible_check_mode
+  when: not hbase_standalone and not ansible_check_mode and not disable_yarn
 
 - name: create {{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/yarn-site.xml
   file: state=link src=/etc/hbase-{{ env_name }}/yarn-site.xml dest={{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/conf/yarn-site.xml
-  when: not hbase_standalone and not ansible_check_mode
+  when: not hbase_standalone and not ansible_check_mode and not disable_yarn
 
 - name: create /etc/hbase-{{ env_name }}/hadoop-metrics.properties
   file: state=link src=/etc/hadoop-{{ env_name }}/hadoop-metrics.properties dest=/etc/hbase-{{ env_name }}/hadoop-metrics.properties
