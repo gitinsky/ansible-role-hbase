@@ -35,3 +35,7 @@ hbase_phoenix_stats_guidepost_width: 104857600
 hbase_rs_jmxremote_port: 10102
 hbase_client_scanner_caching: 2147483647
 hbase_client_scanner_max_result_size: 2097152
+hbase_client_keyvalue_maxsize: 209715200
+hbase_thrift_maxqueuedrequests: 0
+hbase_thrift_minworkerthreads: 200
+hbase_thrift_maxworkerthreads: 2000

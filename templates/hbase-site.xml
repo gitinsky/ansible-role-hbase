@@ -40,20 +40,20 @@
 </property>
 <property>
     <name>hbase.client.keyvalue.maxsize</name>
-    <value>209715200</value> <!-- 200 MB -->
+    <value>{{ hbase_client_keyvalue_maxsize }}</value>
     <description>Specifies the combined maximum allowed size of a KeyValue instance. This is to set an upper boundary for a single entry saved in a storage file. Since they cannot be split it helps avoiding that a region cannot be split any further because the data is too large. It seems wise to set this to a fraction of the maximum region size. Setting it to zero or less disables the check. </description>
 </property>
 <property>
     <name>hbase.thrift.maxQueuedRequests</name>
-    <value>0</value>
+    <value>{{ hbase_thrift_maxqueuedrequests }}</value>
 </property>
 <property>
     <name>hbase.thrift.minWorkerThreads</name>
-    <value>200</value>
+    <value>{{ hbase_thrift_minworkerthreads }}</value>
 </property>
 <property>
     <name>hbase.thrift.maxWorkerThreads</name>
-    <value>2000</value>
+    <value>{{ hbase_thrift_maxworkerthreads }}</value>
 </property>
 <property>
     <name>hbase.regionserver.handler.count</name>
