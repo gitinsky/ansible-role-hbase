@@ -214,7 +214,7 @@
 </property>
 <property>
     <name>hbase.storescanner.parallel.seek.enable</name>
-    <value>true</value>
+    <value>{{ hbase_storescanner_parallel_seek_enable }}</value>
 </property>
 <property>
     <name>hbase.client.scanner.caching</name>
