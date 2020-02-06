@@ -234,14 +234,18 @@
     <name>hbase.server.keyvalue.maxsize</name>
     <value>{{ hbase_server_keyvalue_maxsize }}</value>
 </property>
+{% if hbase_regionserver_thread_compaction_small is defined %}
 <property>
     <name>hbase.regionserver.thread.compaction.small</name>
     <value>{{ hbase_regionserver_thread_compaction_small }}</value>
 </property>
+{% endif %}
+{% if hbase_regionserver_thread_compaction_large is defined %}
 <property>
     <name>hbase.regionserver.thread.compaction.large</name>
     <value>{{ hbase_regionserver_thread_compaction_large }}</value>
 </property>
+{% endif %}
 <property>
     <name>hbase.hstore.flusher.count</name>
     <value>{{ hbase_hstore_flusher_count }}</value>
