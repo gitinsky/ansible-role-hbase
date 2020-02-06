@@ -280,10 +280,12 @@
 </property>
 {% endif %}
 -->
+{% if hbase_bucketcache_ioengine is defined %}
 <property>
     <name>hbase.bucketcache.ioengine</name>
     <value>{{ hbase_bucketcache_ioengine }}</value>
 </property>
+{% endif %}
 {% if hbase_bucketcache_size is defined %}
 <property>
     <name>hbase.bucketcache.size</name>
