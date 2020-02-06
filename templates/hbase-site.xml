@@ -83,7 +83,7 @@
 </property>
 <property>
     <name>hfile.block.cache.size</name>
-    <value>0.25</value>
+    <value>{{ hfile_block_cache_size }}</value>
 </property>
 <property>
     <!-- @see https://issues.apache.org/jira/browse/HBASE-5074 -->
