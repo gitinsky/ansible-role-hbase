@@ -46,3 +46,9 @@ hbase_hstore_compaction_max_size: 524288000
 hbase_regionserver_info_bindaddress: "{{ ansible_host }}"
 hbase_regionserver_region_split_policy: "org.apache.hadoop.hbase.regionserver.ConstantSizeRegionSplitPolicy"
 hbase_storescanner_parallel_seek_enable: "true"
+hbase_server_keyvalue_maxsize: 10485760
+hbase_hstore_flusher_count: 2
+hbase_hstore_blockingstorefiles: 16
+hbase_hstore_compaction_min: 3
+hbase_hstore_compaction_max: 10
+hbase_regionserver_optionalcacheflushinterval: 3600000

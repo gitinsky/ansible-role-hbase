@@ -82,6 +82,10 @@
     <value>0.35</value>
 </property>
 <property>
+    <name>hbase.regionserver.global.memstore.size</name>
+    <value>{{ hbase_regionserver_global_memstore_size }}</value>
+</property>
+<property>
     <name>hfile.block.cache.size</name>
     <value>{{ hfile_block_cache_size }}</value>
 </property>
@@ -227,5 +231,61 @@
 <property>
     <name>hbase.regionserver.region.split.policy</name>
     <value>{{ hbase_regionserver_region_split_policy }}</value>
+</property>
+<property>
+    <name>hbase.regionserver.hlog.blocksize</name>
+    <value>{{ hbase_regionserver_hlog_blocksize }}</value>
+</property>
+<property>
+    <name>hbase.server.keyvalue.maxsize</name>
+    <value>{{ hbase_server_keyvalue_maxsize }}</value>
+</property>
+<property>
+    <name>hbase.regionserver.thread.compaction.small</name>
+    <value>{{ hbase_regionserver_thread_compaction_small }}</value>
+</property>
+<property>
+    <name>hbase.regionserver.thread.compaction.large</name>
+    <value>{{ hbase_regionserver_thread_compaction_large }}</value>
+</property>
+<property>
+    <name>hbase.hstore.flusher.count</name>
+    <value>{{ hbase_hstore_flusher_count }}</value>
+</property>
+<property>
+    <name>hbase.hstore.blockingStoreFiles</name>
+    <value>{{ hbase_hstore_blockingstorefiles }}</value>
+</property>
+<property>
+    <name>hbase.hstore.compaction.min</name>
+    <value>{{ hbase_hstore_compaction_min }}</value>
+</property>
+<property>
+    <name>hbase.hstore.compaction.max</name>
+    <value>{{ hbase_hstore_compaction_max }}</value>
+</property>
+<property>
+    <name>hbase.regionserver.throughput.controller</name>
+    <value>{{ hbase_regionserver_throughput_controller }}</value>
+</property>
+<property>
+    <name>hfile.block.cache.policy</name>
+    <value>{{ hfile_block_cache_policy }}</value>
+</property>
+<property>
+    <name>hbase.bucketcache.combinedcache.enabled</name>
+    <value>{{ hbase_bucketcache_combinedcache_enabled }}</value>
+</property>
+<property>
+    <name>hbase.bucketcache.ioengine</name>
+    <value>{{ hbase_bucketcache_ioengine }}</value>
+</property>
+<property>
+    <name>hbase.bucketcache.size</name>
+    <value>{{ hbase_bucketcache_size }}</value>
+</property>
+<property>
+    <name>hbase.regionserver.optionalcacheflushinterval</name>
+    <value>{{ hbase_regionserver_optionalcacheflushinterval }}</value>
 </property>
 </configuration>
