@@ -224,10 +224,12 @@
     <name>hbase.regionserver.region.split.policy</name>
     <value>{{ hbase_regionserver_region_split_policy }}</value>
 </property>
+{% if hbase_regionserver_hlog_blocksize is defined %}
 <property>
     <name>hbase.regionserver.hlog.blocksize</name>
     <value>{{ hbase_regionserver_hlog_blocksize }}</value>
 </property>
+{% endif %}
 <property>
     <name>hbase.server.keyvalue.maxsize</name>
     <value>{{ hbase_server_keyvalue_maxsize }}</value>
