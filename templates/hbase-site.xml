@@ -272,18 +272,24 @@
     <name>hfile.block.cache.policy</name>
     <value>{{ hfile_block_cache_policy }}</value>
 </property>
+<!-- No longer in HBase 2.0+
+{% if hbase_bucketcache_combinedcache_enabled is defined %} 
 <property>
     <name>hbase.bucketcache.combinedcache.enabled</name>
     <value>{{ hbase_bucketcache_combinedcache_enabled }}</value>
 </property>
+{% endif %}
+-->
 <property>
     <name>hbase.bucketcache.ioengine</name>
     <value>{{ hbase_bucketcache_ioengine }}</value>
 </property>
+{% if hbase_bucketcache_size is defined %}
 <property>
     <name>hbase.bucketcache.size</name>
     <value>{{ hbase_bucketcache_size }}</value>
 </property>
+{% endif %}
 <property>
     <name>hbase.regionserver.optionalcacheflushinterval</name>
     <value>{{ hbase_regionserver_optionalcacheflushinterval }}</value>
