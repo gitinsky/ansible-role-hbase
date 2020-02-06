@@ -96,7 +96,7 @@
 </property>
 <property>
     <name>hbase.hstore.compaction.min.size</name>
-    <value>152400000</value>
+    <value>{{ hbase_hstore_compaction_min_size }}</value>
 </property>
 <property>
     <name>hbase.hregion.majorcompaction</name>
@@ -104,7 +104,7 @@
 </property>
 <property>
     <name>hbase.hstore.compaction.max.size</name>
-    <value>524288000</value>
+    <value>{{ hbase_hstore_compaction_max_size }}</value>
 </property>
 <property>
     <name>hbase.master.info.port</name>

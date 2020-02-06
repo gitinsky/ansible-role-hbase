@@ -40,3 +40,5 @@ hbase_thrift_maxqueuedrequests: 0
 hbase_thrift_minworkerthreads: 200
 hbase_thrift_maxworkerthreads: 2000
 hfile_block_cache_size: 0.25
+hbase_hstore_compaction_min_size: 152400000
+hbase_hstore_compaction_max_size: 524288000
