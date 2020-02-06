@@ -156,6 +156,7 @@
     <name>hbase.rpc.timeout</name>
     <value>{{ hbase_rpc_timeout }}</value>
 </property>
+{% if phoenix_enabled %}
 <property>
     <name>phoenix.query.maxGlobalMemoryPercentage</name>
     <value>{{ hbase_phoenix_memory_percentage }}</value>
@@ -172,6 +173,7 @@
     <name>phoenix.index.failure.unhandled.killserver</name>
     <value>{{ phoenix_index_failure }}</value>
 </property>
+{% endif %}
 <property>
     <name>hbase.regionserver.wal.codec</name>
     <value>org.apache.hadoop.hbase.regionserver.wal.IndexedWALEditCodec</value>
@@ -186,6 +188,7 @@
     <value>org.apache.hadoop.hbase.ipc.controller.ServerRpcControllerFactory</value>
     <description>Factory to create the Phoenix RPC Scheduler that uses separate queues for index and metadata updates</description>
 </property>
+{% if phoenix_enabled %}
 <property>
     <name>phoenix.query.timeoutMs</name>
     <value>{{ hbase_phoenix_query_timeout }}</value>
@@ -199,12 +202,17 @@
     <value>{{ hbase_phoenix_stats_guidepost_width }}</value>
 </property>
 <property>
-    <name>hbase.regionserver.info.bindAddress</name>
-    <value>{{ ansible_host }}</value>
-</property>
-<property>
     <name>phoenix.trace.frequency</name>
     <value>always</value>
+</property>
+<property>
+    <name>phoenix.coprocessor.maxServerCacheTimeToLiveMs</name>
+    <value>60000</value>
+</property>
+{% endif %}
+<property>
+    <name>hbase.regionserver.info.bindAddress</name>
+    <value>{{ ansible_host }}</value>
 </property>
 <property>
     <name>hbase.storescanner.parallel.seek.enable</name>
@@ -217,10 +225,6 @@
 <property>
     <name>hbase.client.scanner.max.result.size</name>
     <value>{{ hbase_client_scanner_max_result_size }}</value>
-</property>
-<property>
-    <name>phoenix.coprocessor.maxServerCacheTimeToLiveMs</name>
-    <value>60000</value>
 </property>
 <property>
     <name>hbase.regionserver.region.split.policy</name>
