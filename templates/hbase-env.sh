@@ -82,7 +82,7 @@ HBASE_JMX_BASE="-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.ss
 HBASE_JMX_BASE="$HBASE_JMX_BASE -Dcom.sun.management.jmxremote.password.file=$HBASE_HOME/conf/jmxremote.passwd"
 export HBASE_JMX_BASE="$HBASE_JMX_BASE -Dcom.sun.management.jmxremote.access.file=$HBASE_HOME/conf/jmxremote.access"
 export HBASE_MASTER_OPTS="$HBASE_MASTER_OPTS -Xmx{{ hbase_master_heapsize }}m $HBASE_JMX_BASE -Dcom.sun.management.jmxremote.port=10101 -javaagent:{{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/lib/jmx_prometheus_javaagent-0.3.1.jar=9120:$HBASE_HOME/conf/jmx_prometheus_javaagent.yaml"
-export HBASE_REGIONSERVER_OPTS="$HBASE_REGIONSERVER_OPTS $HBASE_JMX_BASE -Dcom.sun.management.jmxremote.port={{ hbase_rs_jmxremote_port }} -javaagent:{{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/lib/jmx_prometheus_javaagent-0.3.1.jar=9121:$HBASE_HOME/conf/jmx_prometheus_javaagent.yaml"
+export HBASE_REGIONSERVER_OPTS="$HBASE_REGIONSERVER_OPTS $HBASE_JMX_BASE -Dcom.sun.management.jmxremote.port={{ hbase_rs_jmxremote_port }} -javaagent:{{ hbase_distr_prefix }}-{{ env_name }}-{{ hbase_version }}/lib/jmx_prometheus_javaagent-0.3.1.jar={{ hbase_regionserver_prometheus_port }}:$HBASE_HOME/conf/jmx_prometheus_javaagent.yaml"
 export HBASE_THRIFT_OPTS="$HBASE_THRIFT_OPTS $HBASE_JMX_BASE -Dcom.sun.management.jmxremote.port=10103"
 # export HBASE_ZOOKEEPER_OPTS="$HBASE_ZOOKEEPER_OPTS $HBASE_JMX_BASE -Dcom.sun.management.jmxremote.port=10104"
 # export HBASE_REST_OPTS="$HBASE_REST_OPTS $HBASE_JMX_BASE -Dcom.sun.management.jmxremote.port=10105"

@@ -54,3 +54,4 @@ hbase_hstore_compaction_max: 10
 hbase_regionserver_optionalcacheflushinterval: 3600000
 hbase_regionserver_global_memstore_size: "0.4"
 hfile_block_cache_policy: "LRU"
+hbase_regionserver_prometheus_port: 9121
