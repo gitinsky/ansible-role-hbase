@@ -292,6 +292,12 @@
     <value>{{ hbase_bucketcache_size }}</value>
 </property>
 {% endif %}
+{% if hbase_bucketcache_bucket_sizes is defined %}
+<property>
+    <name>hbase.bucketcache.bucket.sizes</name>
+    <value>{{ hbase_bucketcache_bucket_sizes }}</value>
+</property>
+{% endif %}
 <property>
     <name>hbase.regionserver.optionalcacheflushinterval</name>
     <value>{{ hbase_regionserver_optionalcacheflushinterval }}</value>
