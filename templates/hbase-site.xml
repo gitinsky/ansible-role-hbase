@@ -303,6 +303,10 @@
     <value>{{ hbase_regionserver_optionalcacheflushinterval }}</value>
 </property>
 <property>
+    <name>dfs.domain.socket.path</name>
+    <value>{{ hadoop_var_prefix }}/dn_socket</value>
+</property>
+<property>
     <name>dfs.client.read.shortcircuit</name>
     <value>true</value>
 </property>
