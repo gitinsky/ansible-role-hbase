@@ -302,4 +302,8 @@
     <name>hbase.regionserver.optionalcacheflushinterval</name>
     <value>{{ hbase_regionserver_optionalcacheflushinterval }}</value>
 </property>
+<property>
+    <name>dfs.client.read.shortcircuit</name>
+    <value>true</value>
+</property>
 </configuration>
